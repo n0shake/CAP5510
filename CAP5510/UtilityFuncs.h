@@ -5,7 +5,7 @@
 #include "InputDefs.h"
 
 void PrintInputString(const CInputString * inputStr, const char isNumber, FILE * f);
-void ReadInputFile(const char * fName, CInputStringSet * inputStrs, char seperateStr[]);
+void ReadInputFile(const char * fName, CInputStringSet * inputStrs);
 void PrintInputStrSet2File(FILE * f, const CInputStringSet * inputStrs, int startSeq, int endSeq);
 
 int CompareTwoCompactMotifs(const CCompactMotif * m1, const CCompactMotif * m2);

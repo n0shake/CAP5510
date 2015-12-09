@@ -1,9 +1,7 @@
-#define _GNU_SOURCE
-#include "InputDefs.h"
-#include "DNACommonFuncs.h"
-#include "UtilityFuncs.h"
+#include "InputDefs.h";
+#include "DNACommonFuncs.h";
+#include "UtilityFuncs.h";
 #include "stdlib.h"
-
 
 void PrintInputString(const CInputString * inputStr, const char isNumber, FILE * f) {	
 	fprintf(f, "len=%d\n", inputStr->m_length);	
@@ -34,30 +32,29 @@ void SortStrsOfInputStrs(CInputStringSet * inputStrs) {
 	qsort(inputStrs->m_str, inputStrs->m_num, sizeof(CInputString), CmpTwoStrsBasedOnLength);
 }
 
-void ReadInputFile(const char * fName, CInputStringSet * inputStrs, char sepInput1[]) {
+void ReadInputFile(const char * fName, CInputStringSet * inputStrs) {
 	
-	FILE * f;
+    //Initially, the fileName is the file location path and inputStrs is just a pointer
     
-    char str[1000];
+	char str[1000000];
+	FILE * f;
 	
 	int i, tempLen;
 
 	inputStrs->m_num = -1;
 
-	f = fopen(fName, "r");
+	f = fopen(fName, "r"); //r here is the file access mode and stands for reading. Function returns a file pointer otherwise null
 	if (f == NULL) {
 		return;
 	}
-    
 
 	//read each line
-	while ( fgets(str, sizeof(str), f) && inputStrs->m_num < CONST_MAX_NUM_STRINGS) {
-        
-        char *str1 = fgets(str, sizeof(str), f);
-        
+    //fgets() reads a line from a specified stream and stores it into the string pointed to by str. It stops when either (n-1) characters are read, new line is reached or end of file is reached, whichever comes first
+    
+	while ( fgets(str, sizeof(str), f) && inputStrs->m_num < CONST_MAX_NUM_STRINGS) {	
 		if (str[0] != '>' && strlen(str) > 0 && inputStrs->m_num >= 0) {
 			if (inputStrs->m_str[inputStrs->m_num].m_length >= CONST_MAX_INPUT_STRING_LENGTH) {
-                continue;
+				continue;
 			}
 			str[strlen(str) - 1] = '\0';
 			tempLen = CONST_MAX_INPUT_STRING_LENGTH - inputStrs->m_str[inputStrs->m_num].m_length;

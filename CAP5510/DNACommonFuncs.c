@@ -128,15 +128,21 @@ void MapDNAStringFromNumberToLetter(char * str, const  int len) {
 }
 void PrintDNAString(const char * str, const  int len, 
 					const char strMode, const char printMode, FILE * f) {
+    
+    
+    //fprintf sends outputted format to a stream
+    
 	const char * ptrE = str + len;
 	if (strMode == 1) {
 		if (printMode) {
 			for (; str < ptrE; str++) {
 				fprintf(f, "%d", *str);
+                printf("If Print Mode:%d",*str);
 			}
 		} else {
 			for (; str < ptrE; str++) {
 				fprintf(f, "%c", MapNumberToDNALetter(*str));
+//                printf("\nIf Not Print Mode :%d",*str);
 			}
 		}
 	} else {

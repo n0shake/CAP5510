@@ -269,7 +269,7 @@ int PMSPrune4( int motifLen, int hammingDist, CInputStringSet * inputStrs,
 		}
 		memcpy(foundMotifs, fMotifs, numFoundMotifs * sizeof(CCompactMotif));
 	}
-	fprintf(stdout, "\n#Unduplicate Motifs = %d", numFoundMotifs);
+//	fprintf(stdout, "\n#Unduplicate Motifs = %d", numFoundMotifs);
 
 	free(fMotifs);
 	return numFoundMotifs;

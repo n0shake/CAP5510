@@ -68,31 +68,27 @@ void main(int argc, char *argv[]) {
 	ComputeDNAByteTable();
 	ComputeDNAByteTableInverse();
 
-
 	motifLen = 13;
 	hammingDist = 4;
 	sprintf(iFileName, "TestingInput\\input_l%d_d%d_0.txt", motifLen, hammingDist);
 	sprintf(oFileName, "output_l%d_d%d_0.txt", motifLen, hammingDist);
 		
-	if (argc < 5) {
-		fprintf(stdout, "\nWrong parameters.\nCommand line: \nPMSPrune.exe [input file] [output file] [motif length] [d]");
-		return;
-	} else {
-		strcpy(iFileName, argv[1]);
-		strcpy(oFileName, argv[2]);
-		motifLen = atoi(argv[3]);
-		hammingDist = atoi(argv[4]);		
-	}
+//	if (argc < 5) {
+//		fprintf(stdout, "\nWrong parameters.\nCommand line: \nPMSPrune.exe [input file] [output file] [motif length] [d]");
+//		return;
+//	} else {
+//		strcpy(iFileName, "/Users/abhishekbanthia/Documents/XCode projects/CAP5510/CAP5510/input_example.txt");
+//		strcpy(oFileName, "/Users/abhishekbanthia/Documents/XCode projects/CAP5510/CAP5510/Abhishek.txt");
+//		motifLen = atoi(argv[3]);
+//		hammingDist = atoi(argv[4]);		
+//	}
     
-//    strcpy(iFileName, "/Users/abhishekbanthia/Desktop/PMSPrune Source/exe_win_PMSPrune/input_example.txt");
-//    strcpy(oFileName, "/Users/abhishekbanthia/Desktop/PMSPrune Source/exe_win_PMSPrune/abhishek.txt");
-//    motifLen = 9;
-//    hammingDist = 4;
-//
-//    char checkString[] = ">Sequence 1\r\nACCCTCTTGTATAGCAGCAGATGACCGGGTGTTGCCACTCATAGCCTTCCGATGGAGAGAAGCGCGGGCCACTAGAAGATAATGTCGGGCCCTTGAGCGCGCCAAGCCCCAGGCATTTGTAGGCAGGTTTCCTCTCCCGCAGGGGCAATGTGTACATTCGGTAGAACATAACGCTGGAATTACATTCGCCGCATTACTAGTAAACCGTCCTTTGTAAGGAAGCCGCCAGGAGTGCGTTAATGGATAGGGTCCGAACGGTCTCAACTAAGTCCACCTTGCGCAGCCAACGCCACAACTGCCACAGCTTTATCCCGCCTCAGCAGTGGCATGTCTCCAAACCACGGGCAAGCCTGCGATATCAGGCCGCGGAGTCGTGCCGGAGGATCGTCGCCGTAACGACTGTTCTATACCTACCCTAGGGAATACGGGTCTAATCGAGTATCAGGGTGGCTAGATAATAGGCGTATTGACGGCTCGCTCATAGGTACCTCAAGAGGTTTTCAGAATATGCACGGCTCAGTTACACACTCGAACACATATAAGTCAAGCGCCTCCAGCACACCTCCCTAATCGAGGACCATTTTTTATGTGGTCTTCCGG\r\n";
-    
-    //takes file name in char and CIInputStringSet inputStrs which is a global parameter
-	ReadInputFile(iFileName, &inputStrs, checkString);
+    strcpy(iFileName, "/Users/abhishekbanthia/Documents/XCode projects/CAP5510/CAP5510/input_example.txt");
+    strcpy(oFileName, "/Users/abhishekbanthia/Documents/XCode projects/CAP5510/CAP5510/SampleAbhishek.txt");
+    motifLen = 9; //should be dynamically asking for motif length. View original source for reference
+    hammingDist = 4; // should be dynamically asking for hamming distance. View original code for reference
+
+	ReadInputFile(iFileName, &inputStrs); //passes file name and gets a pointer to sorted input string
 
 	fprintf(stdout, "\n\nInput Strings: %d strings l=%d d=%d", inputStrs.m_num, motifLen, hammingDist);
 	for (i = 0; i < inputStrs.m_num; i++) {	
